@@ -1,0 +1,93 @@
+CS 580							Due: Feb. 19Spring 2014De Jong				Homework #3You are to become familiar with the basic symbol manipulation and list processing features of Lisp by extending your or my solution to HW2 in two steps:
+ - first, by generalizing the format of constraint input to allow either symbols or lists of symbols:
+	( (X (Y Z)) ((A B) C) ( (P Q) (R S)) … )
+
+ - second, by providing a simple form of background knowledge: defining new symbols in terms of old ones:
+	( (Outfielder (C_Field R_Field)) (Coin (Penny Dollar)) … )
+
+The goal of both of these steps is to simplify the process of converting the English description of a puzzle into one readable by your puzzle solver.
+
+The file p3a.dat contains a description of the Baseball puzzle using the extended constraint format.  You are to get your code working successfully on it before you tackle the second part.
+
+The file p3b.dat contains a description of the Baseball puzzle using additional symbols representing background knowledge. The constraints now use the newly defined symbols requiring you to preprocess the constraints replacing the new symbols with the old ones before you start generating solutions:
+	(Black Outfielder) ==> (Black (C_Field R_Field))
+The format of the background knowledge input has been specifically chosen to expose another useful aspect of Lisp: the ability to do associative lookups as well as indexed ones.  Implementing part b of HW3 will be considerably simpler if you become familiar with the ASSOC function.
+Requirements:1. Capture the output of a Lisp session in which you successfully load and execute your code on p3a.dat.
+
+2. Capture the output of a Lisp session in which you successfully load and execute your code on p3b.dat.3. Send to cs580ta@cs.gmu.edu the following email:   - the subject field of the email should read: CS580  HW #3
+   - the content of the email should be:
+	Your name	CS580	Homework #3        (A short summary of the status of your program:  what's working,
+	what's not, any issues, problems, ...)
+
+   - your email should have 4 attachments:   	- p3a.lsp and p3b.lsp, your Lisp code for HW3, which must be commented
+             and start out with:		; Your name		; CS580		; Homework #3
+	- p3a.out and p3b.out, your captured Lisp sessionsAs a safety precaution, always cc yourself when you submit homework this way and keep it around until it has been graded and returned.
+
+
+
+; p3a.dat
+( ((Black Blue Brown Green White)
+   (Clover Penny R_Foot Ribbon Dollar)
+   (C_Field F_Base R_Field S_Stop T_Base)
+   )
+
+  (
+   ; Neither Browning nor the two outfielders have a coin as the lucky charm.
+     (Brown (Dollar Penny R_Field C_Field))
+     ( (R_Field C_Field) (Dollar Penny) )
+   
+   ; Bluet in not an outfielder
+     (Blue (R_Field C_Field))
+
+   ; Greenfield is an outfielder and Whitehall’s infield position is not first base
+   ;  but neither has as his lucky charm a clover or a penny
+   ;  and Blackett does not have either of these two lucky charms.
+      (Green (F_Base S_Stop T_Base Clover Penny))
+      (White (R_Field C_Field F_Base Clover Penny))
+      (Black (Clover Penny))
+
+   ; Blacket and Bluet are not the players who play first base or third base
+   ;  and neither of them has a lucky ribbon
+      ( (Black Blue) (F_Base T_Base Ribbon))
+
+   ; The centerfielder’s lucky charm is not a rabbit’s foot
+     (C_Field R_Foot)
+   )
+  )
+
+
+;
+; p3b.dat
+;
+
+( ((Black Blue Brown Green White)
+   (Clover Penny R_Foot Ribbon Dollar)
+   (C_Field F_Base R_Field S_Stop T_Base)
+   )
+  ( (Coin (Penny Dollar))
+    (Infielder (F_Base S_Stop T_Base))
+    (Outfielder (C_Field R_Field))
+    )
+  (
+   ; Neither Browning nor the two outfielders have a coin as the lucky charm.
+     (Brown (Coin Outfielder))
+     (Outfielder Coin)
+
+   ; Bluet is not an outfielder.
+     (Blue Outfielder)
+
+   ; Greenfield is an outfielder and Whitehall’s infield position is not first base
+   ;  but neither has as his lucky charm a clover or a penny
+   ;  and Blackett does not have either of these two lucky charms.
+      (Green (Infielder Clover Penny))
+      (White (Outfielder F_Base Clover Penny))
+      (Black (Clover Penny))
+
+   ; Blacket and Bluet are not the players who play first base or third base
+   ;  and neither of them has a lucky ribbon
+      ((Black Blue) (F_Base T_Base Ribbon))
+
+   ; The centerfielder’s lucky charm is not a rabbit’s foot
+     (C_Field R_Foot)
+   )
+  )

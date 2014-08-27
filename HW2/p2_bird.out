@@ -1,0 +1,65 @@
+Script started on Wed 12 Feb 2014 03:57:14 PM EST
+]0;root@mingzhang-OptiPlex-745: /home/mingzhang/cs580/hw2root@mingzhang-OptiPlex-745:/home/mingzhang/cs580/hw2# clisp
+  i i i i i i i       ooooo    o        ooooooo   ooooo   ooooo
+  I I I I I I I      8     8   8           8     8     o  8    8
+  I  \ `+' /  I      8         8           8     8        8    8
+   \  `-+-'  /       8         8           8      ooooo   8oooo
+    `-__|__-'        8         8           8           8  8
+        |            8     o   8           8     o     8  8
+  ------+------       ooooo    8oooooo  ooo8ooo   ooooo   8
+
+Welcome to GNU CLISP 2.49 (2010-07-07) <http://clisp.cons.org/>
+
+Copyright (c) Bruno Haible, Michael Stoll 1992, 1993
+Copyright (c) Bruno Haible, Marcus Daniels 1994-1997
+Copyright (c) Bruno Haible, Pierpaolo Bernardi, Sam Steingold 1998
+Copyright (c) Bruno Haible, Sam Steingold 1999-2000
+Copyright (c) Sam Steingold, Bruno Haible 2001-2010
+
+Type :h and hit Enter for context help.
+
+[1]> ()[C[Cl)o)a)d) )")")p")2").")l")s")p")
+;; Loading file p2.lsp ...
+;; Loaded file p2.lsp
+T
+[2]> ()[C[Cp)2)
+
+Generating permutation products of: 
+((CRANE FINCH HAWK HERON RAVEN) (JAY MARTIN MAVIS POLLY ROBIN)
+ (MAN1 MAN2 WOMAN1 WOMAN2 WOMAN3) (BIRDSALL DOWNS FOWLER POLTRECCI WINGER))
+
+subject to constraints: 
+((JAY WOMAN1) (JAY WOMAN2) (JAY WOMAN3) (MARTIN WOMAN1) (MARTIN WOMAN2)
+ (MARTIN WOMAN3) (MAVIS MAN1) (MARVIS MAN2) (POLLY MAN1) (POLLY MAN2)
+ (ROBIN MAN1) (ROBIN MAN2) (POLLY PARAKEET) (POLLY PARROT) (HERON MAN1)
+ (HERON MAN2) (HERON CANARY) (HERON COCKATOO) (HERON MYNA) (WINGER CANARY)
+ (WINGER COCKATOO) (WINGER MYNA) (POLLY WINGER) (POLLY HERON) (MARTIN CRANE)
+ (CRANE WOMAN1) (CRANE WOMAN2) (CRANE WOMAN3) (CRANE BIRDSALL) (CRANE FOWLER)
+ (MARTIN BIRDSALL) (MARTIN FOWLER) (ROBIN DOWNS) (HERON DOWNS) (HERON MAN1)
+ (HERON MAN2) (MAN1 DOWNS) (MAN2 DOWNS) (ROBIN MYNA) (ROBIN PARAKEET)
+ (HERON MYNA) (HERON PARAKEET) (DOWNS MYNA) (DOWNS PARAKEET) (FINCH MAN1)
+ (FINCH MAN2) (HAWK WOMAN1) (HAWK WOMAN2) (HAWK WOMAN3) (FINCH CANARY)
+ (HAWK CANARY) (FINCH POLTRECCI) (FINCH BIRDSALL) (HAWK POLTRECCI)
+ (HAWK BIRDSALL) (CANARY POLTRECCI) (CANARY BIRDSALL) (CANARY FOWLER)
+ (RAVEN WOMAN2) (RAVEN WOMAN3) (CRANE MAN2) (HERON WOMAN3) (COCKATOO FINCH)
+ (CANARY POLLY))
+
+((CANARY COCKATOO MYNA PARAKEET PARROT) (RAVEN CRANE FINCH HAWK HERON)
+ (MAVIS JAY POLLY MARTIN ROBIN) (WOMAN1 MAN1 WOMAN3 MAN2 WOMAN2)
+ (DOWNS POLTRECCI FOWLER WINGER BIRDSALL)) 
+  Node count: 69438
+  Leaf count: 1
+
+***ALL_DONE***
+[3]> 
+[1]+  Stopped                 clisp
+]0;root@mingzhang-OptiPlex-745: /home/mingzhang/cs580/hw2root@mingzhang-OptiPlex-745:/home/mingzhang/cs580/hw2# exit
+exit
+There are stopped jobs.
+]0;root@mingzhang-OptiPlex-745: /home/mingzhang/cs580/hw2root@mingzhang-OptiPlex-745:/home/mingzhang/cs580/hw2# exit
+exit
+
+Exiting on signal 15
+Bye.
+
+Script done on Wed 12 Feb 2014 03:58:09 PM EST

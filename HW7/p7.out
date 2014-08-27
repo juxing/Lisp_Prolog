@@ -1,0 +1,37 @@
+Script started on Tue 01 Apr 2014 03:28:16 AM EDT
+]0;root@mingzhang-OptiPlex-745: /home/mingzhang/cs580/hw7root@mingzhang-OptiPlex-745:/home/mingzhang/cs580/hw7# prolog
+Welcome to SWI-Prolog (Multi-threaded, 64 bits, Version 5.10.4)
+Copyright (c) 1990-2011 University of Amsterdam, VU Amsterdam
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software,
+and you are welcome to redistribute it under certain conditions.
+Please visit http://www.swi-prolog.org for details.
+
+For help, use ?- help(Topic). or ?- apropos(Word).
+
+?- consult()[C[Cp)7)_)m)z)[C.
+Warning: /home/mingzhang/cs580/hw7/p7_mz:44:
+	Singleton variables: [Obj]
+Warning: /home/mingzhang/cs580/hw7/p7_mz:74:
+	Singleton variables: [Name]
+% p7_mz compiled 0.00 sec, 13,560 bytes
+true.
+
+?- solve.
+
+Solutions:
+ (blacket right_field rabbit_foot)
+ (bluet short_stop penny)
+ (browning first_base clover)
+ (greenfield center_field ribbon)
+ (whitehall third_base silver_dollar)
+
+true.
+
+?- 
+[1]+  Stopped                 prolog
+]0;root@mingzhang-OptiPlex-745: /home/mingzhang/cs580/hw7root@mingzhang-OptiPlex-745:/home/mingzhang/cs580/hw7# ^C
+]0;root@mingzhang-OptiPlex-745: /home/mingzhang/cs580/hw7root@mingzhang-OptiPlex-745:/home/mingzhang/cs580/hw7# exit
+There are stopped jobs.
+]0;root@mingzhang-OptiPlex-745: /home/mingzhang/cs580/hw7root@mingzhang-OptiPlex-745:/home/mingzhang/cs580/hw7# exit
+
+Script done on Tue 01 Apr 2014 03:28:52 AM EDT

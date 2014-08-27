@@ -1,0 +1,37 @@
+;
+; p3b.dat
+;
+
+
+( ((Black Blue Brown Green White)
+   (Clover Penny R_Foot Ribbon Dollar)
+   (C_Field F_Base R_Field S_Stop T_Base)
+   )
+  ( (Coin (Penny Dollar))
+    (Infielder (F_Base S_Stop T_Base))
+    (Outfielder (C_Field R_Field))
+    )
+  (
+   ; Neither Browning nor the two outfielders have a coin as the lucky charm.
+     (Brown (Coin Outfielder))
+     (Outfielder Coin)
+
+   ; Bluet is not an outfielder.
+     (Blue Outfielder)
+
+   ; Greenfield is an outfielder and Whitehall’s infield position is not first base
+   ;  but neither has as his lucky charm a clover or a penny
+   ;  and Blackett does not have either of these two lucky charms.
+      (Green (Infielder Clover Penny))
+      (White (Outfielder F_Base Clover Penny))
+      (Black (Clover Penny))
+
+   ; Blacket and Bluet are not the players who play first base or third base
+   ;  and neither of them has a lucky ribbon
+      ((Black Blue) (F_Base T_Base Ribbon))
+
+   ; The centerfielder’s lucky charm is not a rabbit’s foot
+     (C_Field R_Foot)
+   )
+  )
+

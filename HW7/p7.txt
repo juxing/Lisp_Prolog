@@ -1,0 +1,141 @@
+
+
+CS 580
+Spring 2014
+De Jong 					Due:  March 26?
+
+
+
+			Homework 7
+
+
+You are to take another step up the Prolog ladder. As usual, start by copying the files on MASON in the HW7 directory to your workspace.  The files p7 and p7_skel contains a partial solution to the baseball puzzle.
+
+Complete the missing pieces for the baseball puzzle.  Capture the output in a file and include it as part of what you hand in along with the Prolog code.
+
+
+
+Requirements:
+
+You are to hand in the following report via email to cs580ta@cs.gmu.edu:
+    - the subject field of the email should read:  CS580 HW#7 De Jong
+    - the content of the email should be:
+        - your name
+        - CS580 Spring 2014
+        - De Jong
+        - Homework #7
+               (A brief report summarizing exactly where you are:
+                what works, doesn't work, problems, etc.)
+     - include the following attachments:
+  	- Prolog source and output for the baseball puzzle.
+
+
+As a safety precaution, always CC yourself when you submit homework this way and keep it around until it has been graded and returned.
+
+
+
+
+
+
+
+/*
+	File p7_skel:  A Prolog skeleton solution to the baseball puzzle
+		using 'not' and lists.
+*/
+
+outfielder(X) :- member(X, [right_field, center_field]).
+
+infielder(X) :- member(X, [first_base, short_stop]).
+
+coin(X) :- member(X, [penny]).
+
+player(Name, Pos, Obj, Pos_list, Charm_list) :-
+	member(Pos, Pos_list),
+	member(Obj, Charm_list),
+	constraints(Name, Pos, Obj).
+
+constraints(Name, Pos, Obj) :-
+	sentence1(Name, Pos, Obj),
+	sentence2(Name, Pos, Obj),
+	sentence3(Name, Pos, Obj),
+	sentence4(Name, Pos, Obj).
+
+/*
+   Syntactic sugar:
+*/
+or(X,Y) :- X ; Y.
+and(X,Y) :- X , Y.
+
+
+/* Sentence #1: 
+    Neither Browning nor the two outfielders have a coin as a lucky charm. 
+*/
+
+sentence1(Name, Pos, Obj) :-
+	not(and(or(Name == browning, outfielder(Pos)), coin(Obj))),
+	not(and(Name == browning, outfielder(Pos))).
+
+
+/* Sentence #2:
+	Bluet is not an outfielder.
+*/
+
+sentence2(Name, Pos, Obj) :- not(and(Name == bluet, outfielder(Pos))).
+
+
+
+/* Sentence #3:
+	Greenfield is an outfielder; neither he nor Blacket 
+	has as his charm a clover or a penny,
+ */
+
+sentence3(Name, Pos, Obj) :-
+	not(and(Name == greenfield, infielder(Pos))),
+	not(and(or(Name == greenfield, Name == blacket), or(Obj == clover, Obj == penny))).
+
+
+/* Sentence #4:
+	Blacket and Bluet are not the players who play first base,
+	and neither of them has the lucky ribbon.
+ */
+
+sentence4(Name, Pos, Obj) :-
+	not(and(or(Name == blacket, Name == bluet), Pos == first_base)),
+	not(and(or(Name == blacket, Name == bluet), Obj == ribbon)).
+
+
+
+soln(X1, Y1, Z1, X2, Y2, Z2, X3, Y3, Z3, X4, Y4, Z4,
+		Y1list, Z1list) :-
+	player(X1, Y1, Z1, Y1list, Z1list),
+		delete(Y1list, Y1, Y2list),
+		delete(Z1list, Z1, Z2list),
+	player(X2, Y2, Z2, Y2list, Z2list),
+		delete(Y2list, Y2, Y3list),
+		delete(Z2list, Z2, Z3list),
+	player(X3, Y3, Z3, Y3list, Z3list),
+		delete(Y3list, Y3, Y4list),
+		delete(Z3list, Z3, Z4list),
+	player(X4, Y4, Z4, Y4list, Z4list).
+
+
+
+solve :-
+	nl, write('Solutions:'), nl,
+	soln( blacket, Y1, Z1, 
+	      bluet, Y2, Z2, 
+	      browning, Y3, Z3,
+	      greenfield, Y4, Z4, 
+	      [right_field, center_field, short_stop, first_base],
+	      [rabbit_foot, penny, clover, ribbon]
+	      ),
+	write(' (blacket '), write(Y1), write(' '), write(Z1), write(')'), nl,
+	write(' (bluet '), write(Y2), write(' '), write(Z2), write(')'), nl,
+	write(' (browning '), write(Y3), write(' '), write(Z3), write(')'), nl,
+	write(' (greenfield '), write(Y4), write(' '), write(Z4), write(')'), nl,
+	nl, 
+	fail.
+
+solve.
+
+

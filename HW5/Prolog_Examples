@@ -1,0 +1,146 @@
+ /*
+      Basic Prolog syntax
+ */
+
+
+ /* This, obviously, is a comment */
+
+	% here is another form
+
+ /*
+    Simple Horn clauses:
+ */
+
+ it_is_raining.		            /* simple propositional fact p */
+ it_is_snowing.
+ it_is_cold.
+ it_is_very_cold.
+
+ it_is_pouring :- it_is_raining.     /* simple propositional rule:  q <- p  */ 
+
+ ground_is_wet :-		    /* r <- p or q  */
+	 it_is_raining;
+	 it_is_snowing.
+
+ freezing_rain :- 		    /* r <- p and q */
+	 it_is_cold ,
+	 it_is_raining.
+
+ bad_weather :-			    /* s <-  p or (q and r) */
+	 ( it_is_very_cold ,
+	   it_is_snowing );
+	 freezing_rain .
+
+ good_weather :-			    /* q <- not p */
+	 not(bad_weather).
+
+
+/*
+	Standard Prolog examples:
+*/
+
+
+/*
+	Recursion and arithmetic:
+*/
+
+factorial(1,1).
+factorial(N,Ans) :-
+	N > 1 ,
+	N1 is N-1 ,
+	factorial(N1,FacN1) ,
+	Ans is N*FacN1.
+
+
+/*
+	I/O Predicates:
+*/
+
+write_list([]).
+write_list([Head | Tail]) :-
+	write(Head),
+	nl,
+	write_list(Tail).
+
+
+/*
+	List Processing:
+*/
+
+member(Name, [Name | _]).
+member(Name, [_ | Tail]) :-
+	member(Name,Tail).
+
+
+myappend([], List, List).
+myappend([X | List1], List2, [X | List3]) :-
+	myappend(List1, List2, List3).
+
+
+delete(Item, [Item | Y], Y).
+delete(Item, [X | Y], Z) :-
+	delete(Item, Y, Z1) ,
+	Z = [X | Z1].
+
+
+/*
+	Exploiting Failure:
+*/
+
+father(joe,kathy).
+father(carl,fred).
+father(carl,mary).
+father(carl,sue).
+
+every_father_child :-
+	father(X,Y),
+	write(X), write(' is the father of '), write(Y), nl,
+	fail.
+
+
+siblings :-
+	write('The siblings are:'), nl,fail.
+
+siblings :-
+	father(X,Y),
+	father(X,Z),
+	Y \== Z,
+	write('   '), write(Y), write(' and '), write(Z), nl,
+	fail.
+
+siblings.
+
+
+
+/*
+	Using cuts:
+*/
+
+newfact(1,1) :- !.
+
+newfact(N, Ans) :-
+	N1 is N-1,
+	newfact(N1, FacN1),
+	Ans is N*FacN1.
+
+
+
+person(tom,  male,   [travel, books, baseball]).
+person(ron,  male,   [beer, football, baseball, music]).
+person(mary, female, [wine, books, swimming, travel]).
+person(sue,  female, [soccer, pizza, beer]).
+
+common_interest(Il1, Il2) :-
+	member(X, Il1),
+	member(X, Il2),
+	!.
+
+findpairs :-
+	person(Man, male, Interests1),
+	person(Woman, female, Interests2),
+	common_interest(Interests1, Interests2),
+	write(Man), write(' might like '), write(Woman), nl,
+	fail.
+
+findpairs :-
+	write(' -- end of list -- '), nl.

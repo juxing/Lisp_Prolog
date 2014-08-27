@@ -1,0 +1,33 @@
+Script started on Wed Apr 02 15:22:30 2014
+mason% prolog
+Quintus Prolog Release 3.5 (Sun 4, SunOS 5.10)
+Originally developed by Quintus Corporation, USA.
+Copyright (C) 1998, Swedish Institute of Computer Science.  All rights reserved.
+PO Box 1263, SE-164 29  Kista, Sweden. +46 8 633 1500
+Email: qpsupport@sics.se    WWW: http://www.sics.se/quintus/
+Licensed to George Mason University
+
+| ?- consult(prol
+     .
+! Syntax error
+! between lines 8 and 10
+! consult(prol
+! <<here>>
+
+| ?- consult(geneology).
+% compiling file /home/u5/mzhang8/cs580/HW6/geneology
+% geneology compiled in module user, 0.000 sec 2,304 bytes
+
+yes
+| ?- parent(mingzhang,nate).
+
+yes
+| ?- grandparent(mingzhang,johns).
+
+yes
+| ?- grandmother(sunshine,angel).
+
+no
+| ?- grandmother(sunshine,cindy).
+
+yes

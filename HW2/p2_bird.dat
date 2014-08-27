@@ -1,0 +1,25 @@
+
+( ((canary cockatoo myna parakeet parrot)
+   (crane finch hawk heron raven)
+   (jay martin mavis polly robin)
+   (man1 man2 woman1 woman2 woman3)
+   (birdsall downs fowler poltrecci winger)
+   )
+  (
+     (jay woman1) (jay woman2) (jay woman3) (martin woman1) (martin woman2) (martin woman3) (mavis man1) (marvis man2) (polly man1) (polly man2) (robin man1) (robin man2)
+
+     (polly parakeet) (polly parrot) (heron man1) (heron man2) (heron canary) (heron cockatoo) (heron myna) (winger canary) (winger cockatoo) (winger myna) (polly winger) (polly heron)
+
+     (martin crane) (crane woman1) (crane woman2) (crane woman3) (crane birdsall) (crane fowler) (martin birdsall) (martin fowler) 
+
+     (robin downs) (heron downs) (heron man1) (heron man2) (man1 downs) (man2 downs) (robin myna) (robin parakeet) (heron myna) (heron parakeet) (downs myna) (downs parakeet)
+
+     (finch man1) (finch man2) (hawk woman1) (hawk woman2) (hawk woman3) (finch canary) (hawk canary) (finch poltrecci) (finch birdsall) (hawk poltrecci) (hawk birdsall) (canary poltrecci) (canary birdsall)
+
+     (canary fowler)
+
+; Negative constraints added by Ming Zhang:
+     (raven woman2) (raven woman3) (crane man2) (heron woman3) (cockatoo finch) (canary polly)
+   )
+  )
+; The rest is up to you!

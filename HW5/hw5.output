@@ -1,0 +1,39 @@
+Script started on Wed 05 Mar 2014 02:05:46 PM EST
+]0;root@mingzhang-OptiPlex-745: /home/mingzhang/cs580/hw5root@mingzhang-OptiPlex-745:/home/mingzhang/cs580/hw5# prolg[Kog
+Welcome to SWI-Prolog (Multi-threaded, 64 bits, Version 5.10.4)
+Copyright (c) 1990-2011 University of Amsterdam, VU Amsterdam
+SWI-Prolog comes with ABSOLUTELY NO WARRANTY. This is free software,
+and you are welcome to redistribute it under certain conditions.
+Please visit http://www.swi-prolog.org for details.
+
+For help, use ?- help(Topic). or ?- apropos(Word).
+
+?- consult()[C[C')')g')e')n')e')o')l')o')g')y')[C[C.
+% geneology compiled 0.00 sec, 6,384 bytes
+true.
+
+?- male()[C[Cm)i)n)g)z)h)a)n)g)[C.
+true.
+
+?- female()[C[Cs)u)n)s)h)i)n)e)[C.
+true.
+
+?- female()[C[Cm)i)n)g)z)h)a)n)g)[C.
+false.
+
+?- mother()[C[CX),) )l)e)o)n)a)[C.
+X = mae ;
+false.
+
+?- mother()[C[Cl)e)o)n)a),) )Y)[C.
+Y = ken ;
+Y = evelyn ;
+Y = rich ;
+Y = dave.
+
+?- 
+% halt
+]0;root@mingzhang-OptiPlex-745: /home/mingzhang/cs580/hw5root@mingzhang-OptiPlex-745:/home/mingzhang/cs580/hw5# exit
+exit
+
+Script done on Wed 05 Mar 2014 02:07:31 PM EST

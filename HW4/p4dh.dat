@@ -1,0 +1,63 @@
+; p4dh.dat
+;
+; This is the 5x4 Dog House  puzzle.
+
+(
+  ( ; symbols
+    (first second third fourth fifth)
+    (Edith Hannah Linda Michelle Sarah)
+    (cocker dach pekin poodle schnauz)
+    (Butter Daisy Pansy Rose Violet)
+    )
+
+  ( (above >) (below <)
+    )
+
+  ( ; relational defs:
+       (ordered (first second third fourth fifth))
+       )
+
+  ( ;constraints
+
+     ;; Constraint 1
+
+     ; Linda lives above Buttercup but below the pekinese
+     ; and Rose is not the pekinese
+	(not Linda (Butter pekin first fifth))
+	(not Butter (fourth fifth pekin))
+	(not pekin (first second Rose))
+	(above Linda Butter)
+	(below Linda pekin)
+	(below Butter pekin)
+
+
+     ;; Constraint 2:
+
+     ; Edith lives above Pansy and below Buttercup
+     ; and none of these dogs is a schnauzer
+        (not Edith (Pansy Butter schnauz first fifth))
+        (not Pansy (fourth fifth Butter))
+        (not Butter (first second schnauz))
+	(above Edith Pansy)
+	(below Edith Butter)
+	(below Pansy Butter)
+
+     ;; Constraint 3
+
+     ; The dachshund live above the poodle but below Sarah
+     ; and Sarah does not own the pekinese
+	(not dach (first fifth Sarah))
+	(not Sarah (first second poodle pekin))
+	(not poodle (fourth fifth))
+	(above dach poodle)
+	(below dach Sarah)
+	(below poodle Sarah)
+
+     ;; Constraint 4
+
+     ; Violet is not the schnauzer
+     ; and Violet lives below Michelle
+	(not Violet (schnauz Michelle fifth))
+	(not Michelle first)
+      )
+)

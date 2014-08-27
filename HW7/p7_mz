@@ -1,0 +1,115 @@
+/*
+	File p7_skel:  A Prolog skeleton solution to the baseball puzzle
+		using 'not' and lists.
+*/
+
+outfielder(X) :- member(X, [right_field, center_field]).
+
+infielder(X) :- member(X, [first_base, third_base, short_stop]).
+
+coin(X) :- member(X, [penny, silver_dollar]).
+
+player(Name, Pos, Obj, Pos_list, Charm_list) :-
+	member(Pos, Pos_list),
+	member(Obj, Charm_list),
+	constraints(Name, Pos, Obj).
+
+constraints(Name, Pos, Obj) :-
+	sentence1(Name, Pos, Obj),
+	sentence2(Name, Pos, Obj),
+	sentence3(Name, Pos, Obj),
+	sentence4(Name, Pos, Obj),
+	sentence5(Name, Pos, Obj).
+
+/*
+   Syntactic sugar:
+*/
+or(X,Y) :- X ; Y.
+and(X,Y) :- X , Y.
+
+
+/* Sentence #1: 
+    Neither Browning nor the two outfielders have a coin as a lucky charm. 
+*/
+
+sentence1(Name, Pos, Obj) :-
+	not(and(or(Name == browning, outfielder(Pos)), coin(Obj))),
+	not(and(Name == browning, outfielder(Pos))).
+
+
+/* Sentence #2:
+	Bluet is not an outfielder.
+*/
+
+sentence2(Name, Pos, Obj) :- not(and(Name == bluet, outfielder(Pos))).
+
+
+
+/* Sentence #3:
+	Greenfield is an outfielder; neither he nor Blacket 
+	has as his charm a clover or a penny,
+ */
+
+sentence3(Name, Pos, Obj) :-
+	not(and(Name == greenfield, infielder(Pos))),
+	not(and(Name == whitehall, outfielder(Pos))),
+	not(and(Name == whitehall, Pos == first_base)),
+	not(and(or(Name == greenfield, Name == blacket), or(Obj == clover, Obj == penny))),
+	not(and(Name == whitehall, or(Obj == clover, Obj == penny))).
+
+
+/* Sentence #4:
+	Blacket and Bluet are not the players who play first base,
+	and neither of them has the lucky ribbon.
+ */
+
+sentence4(Name, Pos, Obj) :-
+	not(and(or(Name == blacket, Name == bluet), or(Pos == first_base, Pos == third_base))),
+	not(and(or(Name == blacket, Name == bluet), Obj == ribbon)).
+
+/* Sentence #5:
+	The centerfielder's lucky charm is not a rabbit's foot.
+ */
+
+sentence5(Name, Pos, Obj) :-
+	not(and(Pos == center_field, Obj == rabbit_foot)).
+
+
+soln(X1, Y1, Z1, X2, Y2, Z2, X3, Y3, Z3, X4, Y4, Z4, X5, Y5, Z5, 
+		Y1list, Z1list) :-
+	player(X1, Y1, Z1, Y1list, Z1list),
+		delete(Y1list, Y1, Y2list),
+		delete(Z1list, Z1, Z2list),
+	player(X2, Y2, Z2, Y2list, Z2list),
+		delete(Y2list, Y2, Y3list),
+		delete(Z2list, Z2, Z3list),
+	player(X3, Y3, Z3, Y3list, Z3list),
+		delete(Y3list, Y3, Y4list),
+		delete(Z3list, Z3, Z4list),
+	player(X4, Y4, Z4, Y4list, Z4list),
+                delete(Y4list, Y4, Y5list),
+                delete(Z4list, Z4, Z5list),
+	player(X5, Y5, Z5, Y5list, Z5list).
+
+
+solve :-
+	nl, write('Solutions:'), nl,
+	soln( blacket, Y1, Z1, 
+	      bluet, Y2, Z2, 
+	      browning, Y3, Z3,
+	      greenfield, Y4, Z4, 
+              whitehall, Y5, Z5,
+	      [right_field, center_field, short_stop, first_base, third_base],
+	      [rabbit_foot, penny, clover, ribbon, silver_dollar]
+	      ),
+	write(' (blacket '), write(Y1), write(' '), write(Z1), write(')'), nl,
+	write(' (bluet '), write(Y2), write(' '), write(Z2), write(')'), nl,
+	write(' (browning '), write(Y3), write(' '), write(Z3), write(')'), nl,
+	write(' (greenfield '), write(Y4), write(' '), write(Z4), write(')'), nl,
+	write(' (whitehall '), write(Y5), write(' '), write(Z5), write(')'), nl,
+	nl, 
+	fail.
+
+solve.
+
+

@@ -1,0 +1,14 @@
+;
+; p1.dat
+;
+
+( (a b) (x y) )
+
+( (a b c) (x y) )
+
+( (a b x) (x y z) )
+
+( (1 2) (a b c) (x y z) )
+
+( (clover penny r_foot ribbon dollar) (c_field f_base r_field s_stop t_base) )
+

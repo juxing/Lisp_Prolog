@@ -1,0 +1,150 @@
+Script started on Wed 05 Feb 2014 12:32:51 PM EST
+]0;root@mingzhang-OptiPlex-745: /home/mingzhang/cs580/hw1root@mingzhang-OptiPlex-745:/home/mingzhang/cs580/hw1# clisp
+  i i i i i i i       ooooo    o        ooooooo   ooooo   ooooo
+  I I I I I I I      8     8   8           8     8     o  8    8
+  I  \ `+' /  I      8         8           8     8        8    8
+   \  `-+-'  /       8         8           8      ooooo   8oooo
+    `-__|__-'        8         8           8           8  8
+        |            8     o   8           8     o     8  8
+  ------+------       ooooo    8oooooo  ooo8ooo   ooooo   8
+
+Welcome to GNU CLISP 2.49 (2010-07-07) <http://clisp.cons.org/>
+
+Copyright (c) Bruno Haible, Michael Stoll 1992, 1993
+Copyright (c) Bruno Haible, Marcus Daniels 1994-1997
+Copyright (c) Bruno Haible, Pierpaolo Bernardi, Sam Steingold 1998
+Copyright (c) Bruno Haible, Sam Steingold 1999-2000
+Copyright (c) Sam Steingold, Bruno Haible 2001-2010
+
+Type :h and hit Enter for context help.
+
+[1]> ()[C[Cl)o)a)d) )")")p")1").")l")s")p")
+;; Loading file p1.lsp ...
+;; Loaded file p1.lsp
+T
+[2]> ()[C[Cp)1)
+(B A)*(Y X)
+(B A)*(X Y)
+(A B)*(Y X)
+(A B)*(X Y)
+(C B A)*(Y X)
+(C B A)*(X Y)
+(B C A)*(Y X)
+(B C A)*(X Y)
+(C A B)*(Y X)
+(C A B)*(X Y)
+(A C B)*(Y X)
+(A C B)*(X Y)
+(B A C)*(Y X)
+(B A C)*(X Y)
+(A B C)*(Y X)
+(A B C)*(X Y)
+(X B A)*(Z Y X)
+(X B A)*(Y Z X)
+(X B A)*(Z X Y)
+(X B A)*(X Z Y)
+(X B A)*(Y X Z)
+(X B A)*(X Y Z)
+(B X A)*(Z Y X)
+(B X A)*(Y Z X)
+(B X A)*(Z X Y)
+(B X A)*(X Z Y)
+(B X A)*(Y X Z)
+(B X A)*(X Y Z)
+(X A B)*(Z Y X)
+(X A B)*(Y Z X)
+(X A B)*(Z X Y)
+(X A B)*(X Z Y)
+(X A B)*(Y X Z)
+(X A B)*(X Y Z)
+(A X B)*(Z Y X)
+(A X B)*(Y Z X)
+(A X B)*(Z X Y)
+(A X B)*(X Z Y)
+(A X B)*(Y X Z)
+(A X B)*(X Y Z)
+(B A X)*(Z Y X)
+(B A X)*(Y Z X)
+(B A X)*(Z X Y)
+(B A X)*(X Z Y)
+(B A X)*(Y X Z)
+(B A X)*(X Y Z)
+
+Surpressing print...
+(2 1)*(C B A)*(Z Y X)
+(2 1)*(C B A)*(Y Z X)
+(2 1)*(C B A)*(Z X Y)
+(2 1)*(C B A)*(X Z Y)
+(2 1)*(C B A)*(Y X Z)
+(2 1)*(C B A)*(X Y Z)
+(2 1)*(B C A)*(Z Y X)
+(2 1)*(B C A)*(Y Z X)
+(2 1)*(B C A)*(Z X Y)
+(2 1)*(B C A)*(X Z Y)
+(2 1)*(B C A)*(Y X Z)
+(2 1)*(B C A)*(X Y Z)
+(2 1)*(C A B)*(Z Y X)
+(2 1)*(C A B)*(Y Z X)
+(2 1)*(C A B)*(Z X Y)
+(2 1)*(C A B)*(X Z Y)
+(2 1)*(C A B)*(Y X Z)
+(2 1)*(C A B)*(X Y Z)
+(2 1)*(A C B)*(Z Y X)
+(2 1)*(A C B)*(Y Z X)
+(2 1)*(A C B)*(Z X Y)
+(2 1)*(A C B)*(X Z Y)
+(2 1)*(A C B)*(Y X Z)
+(2 1)*(A C B)*(X Y Z)
+(2 1)*(B A C)*(Z Y X)
+(2 1)*(B A C)*(Y Z X)
+(2 1)*(B A C)*(Z X Y)
+(2 1)*(B A C)*(X Z Y)
+(2 1)*(B A C)*(Y X Z)
+(2 1)*(B A C)*(X Y Z)
+
+Surpressing print...
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(T_BASE S_STOP R_FIELD F_BASE C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(S_STOP T_BASE R_FIELD F_BASE C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(T_BASE R_FIELD S_STOP F_BASE C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(R_FIELD T_BASE S_STOP F_BASE C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(S_STOP R_FIELD T_BASE F_BASE C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(R_FIELD S_STOP T_BASE F_BASE C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(T_BASE S_STOP F_BASE R_FIELD C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(S_STOP T_BASE F_BASE R_FIELD C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(T_BASE F_BASE S_STOP R_FIELD C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(F_BASE T_BASE S_STOP R_FIELD C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(S_STOP F_BASE T_BASE R_FIELD C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(F_BASE S_STOP T_BASE R_FIELD C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(T_BASE R_FIELD F_BASE S_STOP C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(R_FIELD T_BASE F_BASE S_STOP C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(T_BASE F_BASE R_FIELD S_STOP C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(F_BASE T_BASE R_FIELD S_STOP C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(R_FIELD F_BASE T_BASE S_STOP C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(F_BASE R_FIELD T_BASE S_STOP C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(S_STOP R_FIELD F_BASE T_BASE C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(R_FIELD S_STOP F_BASE T_BASE C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(S_STOP F_BASE R_FIELD T_BASE C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(F_BASE S_STOP R_FIELD T_BASE C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(R_FIELD F_BASE S_STOP T_BASE C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(F_BASE R_FIELD S_STOP T_BASE C_FIELD)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(T_BASE S_STOP R_FIELD C_FIELD F_BASE)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(S_STOP T_BASE R_FIELD C_FIELD F_BASE)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(T_BASE R_FIELD S_STOP C_FIELD F_BASE)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(R_FIELD T_BASE S_STOP C_FIELD F_BASE)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(S_STOP R_FIELD T_BASE C_FIELD F_BASE)
+(DOLLAR RIBBON R_FOOT PENNY CLOVER)*(R_FIELD S_STOP T_BASE C_FIELD F_BASE)
+
+Surpressing print...
+***ALL_DONE***
+[3]> 
+[1]+  Stopped                 clisp
+]0;root@mingzhang-OptiPlex-745: /home/mingzhang/cs580/hw1root@mingzhang-OptiPlex-745:/home/mingzhang/cs580/hw1# exit
+exit
+There are stopped jobs.
+]0;root@mingzhang-OptiPlex-745: /home/mingzhang/cs580/hw1root@mingzhang-OptiPlex-745:/home/mingzhang/cs580/hw1# exit
+exit
+
+Exiting on signal 15
+Bye.
+
+Script done on Wed 05 Feb 2014 12:33:19 PM EST

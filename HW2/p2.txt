@@ -1,0 +1,113 @@
+CS 580							Due: Feb. 12Spring 2014De Jong				Homework #2You are to become familiar with the basic symbol manipulation and list processing features of Lisp by specializing your or my p1.lsp code to solve logic puzzles like the one involving baseball players.  As discussed in class, we will adopt a “generate and test” approach.  This involves two steps:
+
+ - specializing the HW1 permutation product generator to generate all possible puzzle solutions (i.e, the entire state space with no constraints).
+
+ - then use the constraint information to prune the state space search resulting in a single solution.
+
+The goal here is to understand core Lisp and AI concepts.  So, there is no expectation of fancy I/O.  Just stick with simple s-expression I/O.  In particular, a puzzle description will be a list containing 2 sublists:
+
+ - the first is list of all the puzzle symbols with the assumption that the first set is the name of the puzzle objects and are not permuted.
+
+    ( (Black Blue Brown …) (Clover Penny R_Foot …) (C_Field F_Base R_Field …) )
+
+ - the second list is a set of negative constraints drawn from the English sentences in an embarrassingly simple format:
+        ; Neither Browning nor the two outfielders have a coin as the lucky charm.
+          ( (Brown Dollar) (Brown Penny) (Brown R_Field) (Brown C_Field) … )
+Your program should read in puzzle descriptions from p2.dat and generate all legal solutions (i.e. they don’t violate any of the negative constraints specified).  Your program should make no assumptions about the number of symbols in a particular puzzle or the number of constraints.
+
+The important concept here is the use of the negative constraint information to prune the recursive state space search.  That means writing a function LEGAL that returns True if a partially constructed puzzle solution does not violate any constraints, and False if it does.  The conceptual key is to invoke LEGAL inside the recursive generator in a way that violations are caught early resulting in significant pruning. 
+
+Debug your code on p2.dat.  It has an incomplete set of constraints, resulting in multiple legal solutions.  Once you have constraint checking working, you are to add the additional constraints specified by the English sentences to p2.dat so as to prune down to a single (correct) solution.Requirements:1. Capture the output of a Lisp session in which you successfully load and execute your code on p2.dat.2.  In addition, you are to send to cs580ta.cs.gmu.edu the following email:   - the subject field of the email should read: CS580  HW #2
+   - the content of the email should be:
+	Your name	CS580	Homework #2        (A short summary of the status of your program:  what's working,
+	what's not, any issues, problems, ...)
+
+   - your email should have 3 attachments:   	- p2.lsp, your Lisp code for HW2, which must be commented and start out with:		; Your name		; CS580		; Homework #2
+	- p2.dat
+	- p2.out, your captured Lisp sessionAs a safety precaution, always cc yourself when you submit homework this way and keep it around until it has been graded and returned.
+
+;
+; p2.dat
+:
+
+( ((Black Blue Brown Green White)
+   (Clover Penny R_Foot Ribbon Dollar)
+   (C_Field F_Base R_Field S_Stop T_Base)
+   )
+  (
+    ; no constraints
+   )
+  )
+
+( ((Black Blue Brown Green White)
+   (Clover Penny R_Foot Ribbon Dollar)
+   (C_Field F_Base R_Field S_Stop T_Base)
+   )
+  (
+   ; Neither Browning nor the two outfielders have a coin as the lucky charm.
+     (Brown Dollar) (Brown Penny) (Brown R_Field) (Brown C_Field)
+     (R_Field Dollar) (R_Field Penny)(C_Field Dollar) (C_Field Penny)
+   )
+  )
+
+( ((Black Blue Brown Green White)
+   (Clover Penny R_Foot Ribbon Dollar)
+   (C_Field F_Base R_Field S_Stop T_Base)
+   )
+  (
+   ; Neither Browning nor the two outfielders have a coin as the lucky charm.
+     (Brown Dollar) (Brown Penny) (Brown R_Field) (Brown C_Field)
+     (R_Field Dollar) (R_Field Penny)(C_Field Dollar) (C_Field Penny)
+   
+   ; Bluet in not an outfielder
+     (Blue R_Field) (Blue C_Field)
+   )
+  )
+
+
+; The rest is up to you!
+
+CL-USER 4 > (p2)
+
+Generating permutation products of: ((BLACK BLUE BROWN GREEN WHITE) (CLOVER PENNY R_FOOT RIBBON DOLLAR) (C_FIELD F_BASE R_FIELD S_STOP T_BASE))
+
+subject to constraints: NIL
+
+((BLACK BLUE BROWN GREEN WHITE) (DOLLAR RIBBON R_FOOT PENNY CLOVER) (T_BASE S_STOP R_FIELD F_BASE C_FIELD)) 
+((BLACK BLUE BROWN GREEN WHITE) (DOLLAR RIBBON R_FOOT PENNY CLOVER) (S_STOP T_BASE R_FIELD F_BASE C_FIELD)) 
+((BLACK BLUE BROWN GREEN WHITE) (DOLLAR RIBBON R_FOOT PENNY CLOVER) (T_BASE R_FIELD S_STOP F_BASE C_FIELD)) 
+((BLACK BLUE BROWN GREEN WHITE) (DOLLAR RIBBON R_FOOT PENNY CLOVER) (R_FIELD T_BASE S_STOP F_BASE C_FIELD)) 
+((BLACK BLUE BROWN GREEN WHITE) (DOLLAR RIBBON R_FOOT PENNY CLOVER) (S_STOP R_FIELD T_BASE F_BASE C_FIELD)) 
+       suppressing printing ...
+  Node count: 39446
+  Solution count: 14400
+
+
+Generating permutation products of: ((BLACK BLUE BROWN GREEN WHITE) (CLOVER PENNY R_FOOT RIBBON DOLLAR) (C_FIELD F_BASE R_FIELD S_STOP T_BASE))
+
+subject to constraints: ((BROWN DOLLAR) (BROWN PENNY) (BROWN R_FIELD) (BROWN C_FIELD) (R_FIELD DOLLAR) (R_FIELD PENNY) (C_FIELD DOLLAR) (C_FIELD PENNY))
+
+((BLACK BLUE BROWN GREEN WHITE) (DOLLAR RIBBON R_FOOT PENNY CLOVER) (T_BASE R_FIELD S_STOP F_BASE C_FIELD)) 
+((BLACK BLUE BROWN GREEN WHITE) (DOLLAR RIBBON R_FOOT PENNY CLOVER) (S_STOP R_FIELD T_BASE F_BASE C_FIELD)) 
+((BLACK BLUE BROWN GREEN WHITE) (DOLLAR RIBBON R_FOOT PENNY CLOVER) (T_BASE R_FIELD F_BASE S_STOP C_FIELD)) 
+((BLACK BLUE BROWN GREEN WHITE) (DOLLAR RIBBON R_FOOT PENNY CLOVER) (F_BASE R_FIELD T_BASE S_STOP C_FIELD)) 
+((BLACK BLUE BROWN GREEN WHITE) (DOLLAR RIBBON R_FOOT PENNY CLOVER) (S_STOP R_FIELD F_BASE T_BASE C_FIELD)) 
+       suppressing printing ...
+  Node count: 23798
+  Solution count: 864
+
+
+Generating permutation products of: ((BLACK BLUE BROWN GREEN WHITE) (CLOVER PENNY R_FOOT RIBBON DOLLAR) (C_FIELD F_BASE R_FIELD S_STOP T_BASE))
+
+subject to constraints: ((BROWN DOLLAR) (BROWN PENNY) (BROWN R_FIELD) (BROWN C_FIELD) (R_FIELD DOLLAR) (R_FIELD PENNY) (C_FIELD DOLLAR) (C_FIELD PENNY) (BLUE R_FIELD) (BLUE C_FIELD))
+
+((BLACK BLUE BROWN GREEN WHITE) (RIBBON DOLLAR R_FOOT PENNY CLOVER) (R_FIELD T_BASE S_STOP F_BASE C_FIELD)) 
+((BLACK BLUE BROWN GREEN WHITE) (RIBBON DOLLAR R_FOOT PENNY CLOVER) (R_FIELD S_STOP T_BASE F_BASE C_FIELD)) 
+((BLACK BLUE BROWN GREEN WHITE) (RIBBON DOLLAR R_FOOT PENNY CLOVER) (R_FIELD T_BASE F_BASE S_STOP C_FIELD)) 
+((BLACK BLUE BROWN GREEN WHITE) (RIBBON DOLLAR R_FOOT PENNY CLOVER) (R_FIELD F_BASE T_BASE S_STOP C_FIELD)) 
+((BLACK BLUE BROWN GREEN WHITE) (RIBBON DOLLAR R_FOOT PENNY CLOVER) (R_FIELD S_STOP F_BASE T_BASE C_FIELD)) 
+       suppressing printing ...
+  Node count: 23798
+  Solution count: 432
+
+***ALL_DONE***

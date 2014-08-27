@@ -1,0 +1,107 @@
+CS 580							Due: Feb. 26Spring 2014De Jong				Homework #4You are to become familiar with the basic symbol manipulation and list processing features of Lisp by extending your or my solution to HW3 in order to handle logic puzzles that involve linear ordering constrains such as:
+  - Mary is older than person living in the green house.
+  - Joe lives on a lower floor than the owner of the poodle.
+
+The first step is to generalize the puzzle description language.  This involves:
+  - adding additional background definitions to specify the meaning of relational words:  
+	(older >) (lower <) …
+  - adding linear ordering information:  (order (first second third))
+  - generalizing the constraint format to include constraint type information:
+	(not (Black Blue) (Coin Outfielder))
+	(older (Mary Sue) green)
+	(lower Joe (poodle dachshund))
+
+This means modifications to:
+  - the constraint preprocessing code to handle the new type information and convert things like:
+	(lower Joe poodle) to (< Joe poodle).
+
+  - the constraint checking code to handle 3 types of constraints:
+	(not …) - same as HW3
+	(< …)   - new code
+	(> …)   - new code 
+
+Notice that, unlike the not constraints, the order constraints involve two puzzle objects.  Checking them can be made easier if the permutation product generator produced candidate solutions grouped as objects:
+	( (black penny c_field) (blue dollar t_base) … )
+
+My p3soln.lsp uses this approach. Feel free to use it or stay with the previous generator.
+
+The file p4dh.dat contains a description of the Dog House puzzle using the new puzzle format.  You are to get your code working successfully on it.  Depending on your approach, you might find some of the following Lisp functions useful:  substitute, member, and intersection.
+
+Requirements:1. Capture the output of a Lisp session in which you successfully load and execute your code on p4dh.dat.
+2. Send to cs580ta@cs.gmu.edu the following email:   - the subject field of the email should read: CS580  HW #4
+   - the content of the email should be:
+	Your name	CS580	Homework #4        (A short summary of the status of your program:  what's working,
+	what's not, any issues, problems, ...)
+
+   - your email should have 2 attachments:   	- p4.lsp, your Lisp code for HW4, which must be commented
+             and start out with:		; Your name		; CS580		; Homework #4
+	- p4.out, your captured Lisp session.As a safety precaution, always cc yourself when you submit homework this way and keep it around until it has been graded and returned.
+
+
+
+
+
+
+; p4dh.dat
+;
+; This is the 5x4 Dog House  puzzle.
+
+(
+  ( ; symbols
+    (first second third fourth fifth)
+    (Edith Hannah Linda Michelle Sarah)
+    (cocker dach pekin poodle schnauz)
+    (Butter Daisy Pansy Rose Violet)
+    )
+
+  ( (above >) (below <)
+    )
+
+  ( ; relational defs:
+       (ordered (first second third fourth fifth))
+       )
+
+  ( ;constraints
+
+     ;; Constraint 1
+
+     ; Linda lives above Buttercup but below the pekinese
+     ; and Rose is not the pekinese
+	(not Linda (Butter pekin first fifth))
+	(not Butter (fourth fifth pekin))
+	(not pekin (first second Rose))
+	(above Linda Butter)
+	(below Linda pekin)
+	(below Butter pekin)
+
+
+     ;; Constraint 2:
+
+     ; Edith lives above Pansy and below Buttercup
+     ; and none of these dogs is a schnauzer
+        (not Edith (Pansy Butter schnauz first fifth))
+        (not Pansy (fourth fifth Butter))
+        (not Butter (first second schnauz))
+	(above Edith Pansy)
+	(below Edith Butter)
+	(below Pansy Butter)
+
+     ;; Constraint 3
+
+     ; The dachshund live above the poodle but below Sarah
+     ; and Sarah does not own the pekinese
+	(not dach (first fifth Sarah))
+	(not Sarah (first second poodle pekin))
+	(not poodle (fourth fifth))
+	(above dach poodle)
+	(below dach Sarah)
+	(below poodle Sarah)
+
+     ;; Constraint 4
+
+     ; Violet is not the schnauzer
+     ; and Violet lives below Michelle
+	(not Violet (schnauz Michelle fifth))
+	(not Michelle first)
+      )
+)

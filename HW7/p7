@@ -1,0 +1,20 @@
+/*
+	File p7:  an example of a standard Quintus Prolog "front end" program
+	which adds "not" and list processing to the language, loads a puzzle
+	description which uses these extensions, and solves it.
+
+	Other versions, like SWI-Prolog, generally have these libraries included
+	by default, so this front-end code is not required.
+*/
+
+p7 :-
+	consult(library(not)),
+	consult(library(basics)),
+	consult(library(lists)),
+	consult(p7_skel),
+	solve.
+
+
+
+
+

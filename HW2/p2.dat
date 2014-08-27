@@ -1,0 +1,59 @@
+;
+; p2.dat
+;
+( ((Black Blue Brown Green White)
+   (Clover Penny R_Foot Ribbon Dollar)
+   (C_Field F_Base R_Field S_Stop T_Base)
+   )
+  (
+    ; no constraints
+   )
+  )
+
+( ((Black Blue Brown Green White)
+   (Clover Penny R_Foot Ribbon Dollar)
+   (C_Field F_Base R_Field S_Stop T_Base)
+   )
+  (
+   ; Neither Browning nor the two outfielders have a coin as the lucky charm.
+     (Brown Dollar) (Brown Penny) (Brown R_Field) (Brown C_Field)
+     (R_Field Dollar) (R_Field Penny)(C_Field Dollar) (C_Field Penny)
+   )
+  )
+
+( ((Black Blue Brown Green White)
+   (Clover Penny R_Foot Ribbon Dollar)
+   (C_Field F_Base R_Field S_Stop T_Base)
+   )
+  (
+   ; Neither Browning nor the two outfielders have a coin as the lucky charm.
+     (Brown Dollar) (Brown Penny) (Brown R_Field) (Brown C_Field)
+     (R_Field Dollar) (R_Field Penny)(C_Field Dollar) (C_Field Penny)
+   
+   ; Bluet in not an outfielder
+     (Blue R_Field) (Blue C_Field)
+   )
+  )
+
+
+( ((Black Blue Brown Green White)
+   (Clover Penny R_Foot Ribbon Dollar)
+   (C_Field F_Base R_Field S_Stop T_Base)
+   )
+  (
+   ; Neither Browning nor the two outfielders have a coin as the lucky charm.
+     (Brown Dollar) (Brown Penny) (Brown R_Field) (Brown C_Field)
+     (R_Field Dollar) (R_Field Penny)(C_Field Dollar) (C_Field Penny)
+
+   ; Bluet in not an outfielder
+     (Blue R_Field) (Blue C_Field)
+
+     (green f_base) (green s_stop) (green t_base) (white f_base) (white r_field) (white c_field) (white clover) (white penny) (black clover) (black penny)
+     (black f_base) (black t_base) (blue f_base) (blue t_base) (black ribbon) (blue ribbon)
+     (c_field r_foot)
+
+;Negative constraint added by Ming Zhang.
+     (brown ribbon)
+   )
+  )
+; The rest is up to you!
